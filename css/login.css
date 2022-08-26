@@ -1,0 +1,49 @@
+* {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+}
+label {
+    font-weight: 300;
+    font-style: normal;
+}
+div {
+    background-color:rgba(212, 255, 222, 0.5);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    height: auto;
+    padding: 10px;
+}
+button {
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    border-color:black;
+    padding: 5px;
+    border: 0.001%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-style: solid;
+    background-color: rgb(255, 255, 255);
+}
+button:hover {
+    background-color: aquamarine£;
+}
+form {
+    border-color: black;
+    padding: 5px;
+    border: 0.001%;
+    height: 10%;
+    border-style: solid;
+}
+#main {
+    height: 50%;
+    border: 2px;
+    border-radius: 5px;
+    border-color:blueviolet;
+    border-style: solid;
+}
+#spacer {
+    background-color: aqua;
+    min-height: 100%;
+    min-width: 50%;
+    margin-right: 50%;
+}
