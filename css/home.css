@@ -6,6 +6,7 @@
     border-color: black;
     box-sizing: border-box;
 }
+
 body {
     gap: 0px;
     display: grid;
@@ -16,7 +17,6 @@ body {
 #navbar {
     display: inline-flex;
     width: 100%;
-    height: 125px;
     justify-content: space-around;
     align-items: center;
     align-content: middle;
@@ -27,13 +27,13 @@ body {
     border-color: black;
     border-width: 2px;
     border-bottom-width: 0px;
-    height: auto;
+    max-height: 200px;
 }
 #navbar:hover {
     background-color: rgba(189, 235, 36, 0.75);
     border-radius: 0px;   
 }
-#vvrs_logo {
+#vvrs-logo {
     max-height: 120px;
 }
 #title h1 {
@@ -48,11 +48,10 @@ body {
     gap: 20px;
 }
 button {
-    color: azure;
     align-items: flex-end;
     align-self: flex-end;
     align-content: flex-end;
-    background-color: rgba(46, 240, 191, 0.5);
+    background-color: rgba(125, 242, 134, 0.5);
     height: auto;
     border-style: solid;
     border-width: 1px;
@@ -64,10 +63,8 @@ button:hover {
     border-radius: 0px;
     color: black;
 }
-.button_label {
+.button-label {
     font-weight: 300;
-}
-.button_label {
     font-size: larger;
     padding: 10px;
     padding-top: 20px;
@@ -103,6 +100,7 @@ button:hover {
 #main-panel:hover {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    /* background-color: rgba(245, 255, 245, 0.5); */
 }
 #main-panel p:hover {
     border: 1px solid black;
@@ -119,7 +117,7 @@ button:hover {
 
 /* For smaller screens */
 @media screen and (max-width: 840px) {
-    #vvrs_logo {
+    #vvrs-logo {
         max-height: 100px;
     }
     #title h1 {
@@ -149,9 +147,9 @@ button:hover {
 
 /* footer message */
 footer {
-    display: grid;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
 }
 footer h6 {
-    font-size: 20%;
+    font-size: 10px;
 }
