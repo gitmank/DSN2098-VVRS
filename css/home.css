@@ -72,47 +72,61 @@ button:hover {
 
 /* Main content panel */
 #main-panel {
-    display: grid;
+    display: flex;
+    gap: 20px;
     justify-items: center;
+    justify-content: space-around;
     padding: 5%;
-    height: 500px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    height: 600px;
     border: 2px solid black;
     border-top: 0px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 #main-panel img {
-    display: inline-flex;
-    max-height: 20%;
+    max-height: 100%;
+    border-radius: 0px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
 }
-#main-panel p {
-    padding: 3%;
+#main-panel-text {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    max-height: 350px;
-    align-content: center;
-    justify-content: center;
-    align-content: stretch;
+    gap: 0px;
+    padding: 3%;
+    /* align-content: center;
+    justify-content: center; */
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#main-panel-text p {
+    display: block;
+}
+#text-para {
+    padding: 3%;
+}
+#text-heading {
+    align-self: center;
+    padding: 3%;
+    font-size: 32px;
+    font-weight: 600;
+    background-color: black;
+    color: white;
 }
 #main-panel:hover {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     /* background-color: rgba(245, 255, 245, 0.5); */
 }
-#main-panel p:hover {
+#main-panel-text:hover {
     border: 1px solid black;
     border-radius: 10px;
     background-color: black;
     color: white;
+    border-radius: 0px;
 }
 #main-panel img:hover {
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: azure;
-    max-height: 22%;
+    border-radius: 0px;
 }
 
 /* For smaller screens */
@@ -130,17 +144,16 @@ button:hover {
         gap: 5px;
     }
     #main-panel {
+        display: grid;
         padding: 2%;
-        gap: 0px;
+        gap: 30px;
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
     }
     #main-panel img {
         max-height: 15%;
     }
-    #main-panel img:hover {
-        max-height: 20%;
-    }
-    #main-panel p {
+    #main-panel-text p {
         font-size: 14px;
     }
 }
