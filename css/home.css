@@ -1,3 +1,4 @@
+/* general */
 * {
     font-family: 'IBM Plex Mono', monospace;
     font-weight:400;
@@ -6,13 +7,12 @@
     box-sizing: border-box;
 }
 body {
-    height: device-height;
     gap: 0px;
-}
-/* #container {
     display: grid;
-    grid-template-columns: 1fr;
-} */
+    grid-template-rows: 1fr 3fr;
+}
+
+/* Navigation bar */
 #navbar {
     display: inline-flex;
     width: 100%;
@@ -29,13 +29,23 @@ body {
     border-bottom-width: 0px;
     height: auto;
 }
+#navbar:hover {
+    background-color: rgba(189, 235, 36, 0.75);
+    border-radius: 0px;   
+}
 #vvrs_logo {
-    max-height: 100px;
+    max-height: 120px;
 }
 #title h1 {
     display: inline-block;
-    font-size: 125%;
+    font-size: 150%;
     font-weight: 500;
+}
+/* Actions is a div containing buttons */
+#actions {
+    justify-content: flex-end;
+    display: inline-flex;
+    gap: 20px;
 }
 button {
     color: azure;
@@ -49,87 +59,90 @@ button {
     border-radius: 10px;
     border-color: black;
 }
-.button_label {
-    font-weight: 300;
-}
-#actions {
-    justify-content: flex-end;
-    display: inline-flex;
-    gap: 20px;
-}
 button:hover {
     background-color: rgb(240, 248, 255);
     border-radius: 0px;
     color: black;
 }
-#navbar:hover {
-    background-color: rgba(189, 235, 36, 0.75);
-    border-radius: 0px;   
+.button_label {
+    font-weight: 300;
 }
 .button_label {
     font-size: larger;
     padding: 10px;
     padding-top: 20px;
 }
-#main-frame {
+
+/* Main content panel */
+#main-panel {
     display: grid;
     justify-items: center;
     padding: 5%;
     height: 500px;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     border: 2px solid black;
     border-top: 0px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-#main-frame img {
+#main-panel img {
     display: inline-flex;
     max-height: 20%;
 }
-#main-frame p {
+#main-panel p {
     padding: 3%;
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     max-height: 350px;
     align-content: center;
     justify-content: center;
     align-content: stretch;
 }
-#main-frame:hover {
+#main-panel:hover {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
-#main-frame p:hover {
+#main-panel p:hover {
     border: 1px solid black;
     border-radius: 10px;
     background-color: black;
     color: white;
 }
-#main-frame img:hover {
+#main-panel img:hover {
     border: 1px solid black;
     border-radius: 10px;
     background-color: azure;
     max-height: 22%;
 }
+
+/* For smaller screens */
 @media screen and (max-width: 840px) {
+    #vvrs_logo {
+        max-height: 100px;
+    }
+    #title h1 {
+        font-size: 100%;
+    }
     button {
         font-size: small;
-    }
-    #title {
-        font-size: medium;
     }
     #actions {
         gap: 5px;
     }
-    #main-frame img {
-        max-height: 15%;
-    }
-    #main-frame p {
-        font-size: 14px;
-    }
-    #main-frame {
+    #main-panel {
         padding: 2%;
-        height: 400px;
         gap: 0px;
         grid-template-columns: 1fr;
+    }
+    #main-panel img {
+        max-height: 15%;
+    }
+    #main-panel img:hover {
+        max-height: 20%;
+    }
+    #main-panel p {
+        font-size: 14px;
     }
 }
