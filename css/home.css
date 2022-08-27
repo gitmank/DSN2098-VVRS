@@ -146,3 +146,12 @@ button:hover {
         font-size: 14px;
     }
 }
+
+/* footer message */
+footer {
+    display: grid;
+    justify-content: center;
+}
+footer h6 {
+    font-size: 20%;
+}
