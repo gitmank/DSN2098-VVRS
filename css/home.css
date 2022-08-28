@@ -4,6 +4,7 @@
     border-color: black;    
 }
 /* default view for large screens */
+/* header styling */
 header {
     display: flex;
     justify-content: space-around;
@@ -53,6 +54,7 @@ footer {
     display: flex;
     justify-content: center;
 }
+/* main pane styling */
 #main-pane {
     display: flex;
     justify-content: space-around;

@@ -1,37 +1,42 @@
-<!-- DRAFT LOGIN PAGE -->
+<!-- VVRS LOGIN PAGE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- getting IBM Plex Mono from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <!-- linkning stylesheet -->
     <link rel="stylesheet" href="../css/login.css">
     <title>Login Page</title>
 </head>
 <body>
+    <!-- logo, title and nav buttons -->
     <header id="navbar">
-        <img src="../resources/VVRS-logo-wobg.png" alt="VVRS Logo" id="vvrs-logo">
-        <strong id="title"><h1>CVE Reporting Portal</h1></strong>
+        <div><img src="../resources/VVRS-logo-wobg.png" alt="VVRS Logo" id="vvrs-logo"></div>
+        <h1 id="title">CVRS for VITB</h1>
         <div id="actions">
-            <a href="../html/home.html"><button id="home-button"><label class="button-label">HOME</label></button></a>
-            <a href="../html/signup.html"><button id="signup-button"><label class="button-label">SIGNUP</label></button></a>
+            <a href="../html/home.html"><button id="home-button" class="action-button"><label class="button-label">HOME</label></button></a>
+            <a href="../html/signup.html"><button id="signup-button" class="action-button"><label class="button-label">SIGNUP</label></button></a>
         </div>
     </header>
+    <!-- login fields and submit button -->
     <div id="main-panel">
         <img src="../resources/user-icon.svg" alt="user-icon" id="user-icon">
         <label for="user-icon"><h2>LOGIN</h2></label>
-        <form action="">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email-field">
-            <label for="Password">Password</label>
-            <input type="password" name="password" id="password-field">
+        <form id="login-form" method="post" action="">
+            <div id="fields">
+                <label for="email-field">Email</label>
+                <input type="email" name="Email" id="email-field" class="field" placeholder="Enter your VITB email">
+                <label for="password-field">Password</label>
+                <input type="password" name="password" id="password-field" class="field" placeholder="Enter your password">
+            </div>
+            <input type="submit" id="submit" class="action-button" value="-->">
         </form>
     </div>
-    <footer>
-        <h6>made by with &LessSlantEqual;3 by 21BCY</h6>
-    </footer>
+    <footer><div>made with ♡ by 21BCY</div></footer>
 </body>
 </html>

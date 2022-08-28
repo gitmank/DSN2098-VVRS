@@ -1,143 +1,128 @@
 /* general */
 * {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight:400;
-    font-size: 20px;
-    border-color: black;
     box-sizing: border-box;
+    font-family: 'IBM PLex Mono', Courier, monospace;
+    border-color: black;  
 }
-
-body {
-    display: grid;
-    grid-template-rows: 1fr 3fr;
-    gap: 0px;
-}
-/* Navigation bar */
-#navbar {
-    display: inline-flex;
-    width: 100%;
+/* default view for large screens */
+/* header footer styling */
+header {
+    display: flex;
     justify-content: space-around;
-    align-items: center;
-    align-content: middle;
-    background-color:  rgb(50, 236, 249, 0.5);
+    background-color: rgba(0, 255, 255, 0.5);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    border-bottom-width: 0px;
-    max-height: 200px;
-    padding: 1%;
+    border: 2px solid black;
+    border-bottom: 0px;
 }
-#navbar:hover {
-    background-color: rgba(189, 235, 36, 0.75);
-    border-radius: 0px;   
-}
-#vvrs-logo {
-    max-height: 120px;
-}
-#title h1 {
-    display: inline-block;
-    font-size: 150%;
-    font-weight: 500;
-}
-/* Actions is a div containing buttons */
-#actions {
-    justify-content: flex-end;
-    display: inline-flex;
-    gap: 20px;
-}
-button {
-    align-items: flex-end;
-    align-self: flex-end;
-    align-content: flex-end;
-    background-color: rgba(125, 242, 134, 0.5);
-    height: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
-    border-color: black;
-}
-button:hover {
-    background-color: rgb(240, 248, 255);
+header:hover {
     border-radius: 0px;
-    color: black;
+    background-color: rgba(195, 241, 89, 0.9);
+}
+header div {
+    display: flex;
+    align-items: center;
+}
+header img {
+    max-height: 150px;
+}
+#title {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+#actions {
+    display: flex;
+    gap: 40px;
+}
+.action-button {
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+.action-button:hover {
+    background-color: white;
+    border-radius: 0px;
 }
 .button-label {
-    font-weight: 300;
-    font-size: larger;
-    padding: 10px;
-    padding-top: 20px;
+    font-size: 26px;
+    font-weight: 300;   
 }
-
-/* Main content panel */
+footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+/* main pane styling */
 #main-panel {
-    display: grid;
-    justify-items: center;
-    padding: 2%;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
     border: 2px solid black;
-    border-top: 0px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-#main-panel:hover {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    /* background-color: rgba(245, 255, 245, 0.5); */
-}
 #user-icon {
-    max-height: 120px;
+    max-height: 100px;
+    margin-top: 20px;
 }
-#main-panel h2 {
-    font-size: 30px;
-    font-weight: 400;
+label h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
 }
-#main-panel form {
+#login-form {
     display: grid;
-    gap: 10px;
-    padding: 1%;
-    margin: 1%;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+    gap: 40px;
 }
-
-/* For smaller screens */
-@media screen and (max-width: 840px) {
-    #vvrs-logo {
+#fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+    gap: 20px;
+}
+#fields label {
+    align-self: center;
+    justify-self: flex-start;
+    font-size: 20px;
+}
+#submit-link {
+    display: flex;
+    min-width: 20%;
+    justify-content: flex-end;
+}
+#submit {
+    max-height: 25%;
+    font-size: 24px;
+}
+#submit:hover {
+    background-color: rgba(195, 241, 89, 0.9);
+}
+.field {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 20px;
+}
+/* view for smaller screens */
+@media screen and (max-width: 800px) {
+    /* header modifications */
+    header img {
         max-height: 100px;
     }
-    #title h1 {
-        font-size: 100%;
-    }
-    button {
-        font-size: small;
-    }
-}
-
-/* For smaller screens */
-@media screen and (max-width: 840px) {
-    #vvrs-logo {
-        max-height: 100px;
-    }
-    #title h1 {
-        font-size: 100%;
-    }
-    button {
-        font-size: small;
+    #title {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 24px;
+        font-weight: 500;
     }
     #actions {
-        gap: 5px;
+        gap: 10px;
     }
-    #user-icon {
-        max-height: 80px;
+    .button-label {
+        font-size: 20px;
+        font-weight: 300;
     }
-}
-
-/* footer message */
-footer {
-    display: flex;
-    justify-content: space-around;
-}
-footer h6 {
-    font-size: 10px;
 }
