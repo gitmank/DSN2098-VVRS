@@ -1,168 +1,150 @@
-/* general */
 * {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight:400;
-    font-size: 20px;
-    border-color: black;
     box-sizing: border-box;
+    font-family: 'IBM PLex Mono', Courier, monospace;
+    border-color: black;    
 }
-
-body {
-    gap: 0px;
-    display: grid;
-    grid-template-rows: 1fr 3fr;
-}
-
-/* Navigation bar */
-#navbar {
-    display: inline-flex;
-    width: 100%;
+/* default view for large screens */
+header {
+    display: flex;
     justify-content: space-around;
-    align-items: center;
-    align-content: middle;
-    background-color:  rgb(50, 236, 249, 0.5);
+    background-color: rgba(0, 255, 255, 0.5);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    border-bottom-width: 0px;
-    max-height: 200px;
+    border: 2px solid black;
+    border-bottom: 0px;
 }
-#navbar:hover {
-    background-color: rgba(189, 235, 36, 0.75);
-    border-radius: 0px;   
-}
-#vvrs-logo {
-    max-height: 120px;
-}
-#title h1 {
-    display: inline-block;
-    font-size: 150%;
-    font-weight: 500;
-}
-/* Actions is a div containing buttons */
-#actions {
-    justify-content: flex-end;
-    display: inline-flex;
-    gap: 20px;
-}
-button {
-    align-items: flex-end;
-    align-self: flex-end;
-    align-content: flex-end;
-    background-color: rgba(125, 242, 134, 0.5);
-    height: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
-    border-color: black;
-}
-button:hover {
-    background-color: rgb(240, 248, 255);
+header:hover {
     border-radius: 0px;
-    color: black;
+    background-color: rgba(195, 241, 89, 0.9);
+}
+header div {
+    display: flex;
+    align-items: center;
+}
+header img {
+    max-height: 150px;
+}
+#title {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+#actions {
+    display: flex;
+    gap: 40px;
+}
+.action-button {
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+.action-button:hover {
+    background-color: white;
+    border-radius: 0px;
 }
 .button-label {
+    font-size: 26px;
     font-weight: 300;
-    font-size: larger;
-    padding: 10px;
-    padding-top: 20px;
 }
-
-/* Main content panel */
-#main-panel {
+footer {
+    margin-top: 10px;
     display: flex;
-    gap: 20px;
-    justify-items: center;
+    justify-content: center;
+}
+#main-pane {
+    display: flex;
     justify-content: space-around;
-    padding: 5%;
-    height: 600px;
     border: 2px solid black;
-    border-top: 0px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-#main-panel img {
-    max-height: 100%;
+#text-box {
+    display: flex;
+    align-items: center;
+    max-width: 40%;
+    border: 2px solid black;
+    margin: 5%;
+    border-radius: 10px;
+}
+#text-box:hover {
+    color: white;
+    background-color: black;
     border-radius: 0px;
-    color: black;
-    border: 2px solid black;
-    border-radius: 10px;
 }
-#main-panel-text {
-    display: grid;
-    gap: 0px;
+#text-pane {
     padding: 3%;
-    /* align-content: center;
-    justify-content: center; */
-    border: 2px solid black;
-    border-radius: 10px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
-#main-panel-text p {
+#text-pane div p {
     display: block;
+    padding: 2%;
 }
-#text-para {
-    padding: 3%;
-}
-#text-heading {
-    align-self: center;
-    padding: 3%;
-    font-size: 32px;
-    font-weight: 600;
-    background-color: black;
+#text-pane div h3 {
     color: white;
+    background-color: black;
+    padding: 2%;
 }
-#main-panel:hover {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    /* background-color: rgba(245, 255, 245, 0.5); */
+#text-pane div h3:hover {
+    color: black;
+    background-color: white;
 }
-#main-panel-text:hover {
-    border: 1px solid black;
+#image {
+    display: flex;
+    align-items: center;
+    max-width: 40%;
+    border: 2px solid black;
+    margin: 5%;
     border-radius: 10px;
-    background-color: black;
-    color: white;
+}
+#image:hover {
     border-radius: 0px;
 }
-#main-panel img:hover {
-    border-radius: 0px;
+#image img {
+    max-width: 500px;
 }
-
-/* For smaller screens */
-@media screen and (max-width: 840px) {
-    #vvrs-logo {
+/* view for smaller screens */
+@media screen and (max-width: 800px) {
+    /* header modifications */
+    header img {
         max-height: 100px;
     }
-    #title h1 {
-        font-size: 100%;
-    }
-    button {
-        font-size: small;
+    #title {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 24px;
+        font-weight: 500;
     }
     #actions {
-        gap: 5px;
+        gap: 10px;
     }
-    #main-panel {
+    .button-label {
+        font-size: 20px;
+        font-weight: 300;
+    }
+    /* main pane modifications */
+    #main-pane {
         display: grid;
-        padding: 2%;
-        gap: 30px;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        justify-content: space-around;
+        border: 2px solid black;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
-    #main-panel img {
-        max-height: 15%;
+    #text-pane {
+        font-size: 20px;
     }
-    #main-panel-text p {
-        font-size: 14px;
+    #text-box {
+        max-width: 100%;
+        margin: 5%;
     }
-}
-
-/* footer message */
-footer {
-    display: flex;
-    justify-content: space-around;
-}
-footer h6 {
-    font-size: 10px;
+    #image {
+        max-width: 100%;
+    }
+    #image img {
+        max-width: 400px;
+    }
 }

@@ -1,38 +1,37 @@
-<!-- PUBLIC HOME PAGE SHOWN BEFORE AUTHORIZATION -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <!-- setting title and favicon -->
-    <title>VVRS Home</title>
-    <link rel="icon" type="image/x-icon" href="/resources/vvrs-favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- getting IBM Plex Mono from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <!-- linking stylesheet -->
     <link rel="stylesheet" href="../css/home.css">
+    <title>Home Page</title>
 </head>
 <body>
-    <header id="navbar">
-        <img src="../resources/VVRS-logo-wobg.png" alt="VVRS Logo" id="vvrs-logo">
-        <strong id="title"><h1>CVE Reporting Portal</h1></strong>
+    <!-- header contains logo, title and nav buttons -->
+    <header>
+        <div><img src="../resources/VVRS-logo-wobg.png" alt="VVRS Logo" id="vvrs-logo"></div>
+        <h1 id="title">CVRS for VITB</h1>
         <div id="actions">
-            <a href="../html/login.html"><button id="login-button"><label class="button-label">LOGIN</label></button></a>
-            <a href="../html/signup.html"><button id="signup-button"><label class="button-label">SIGNUP</label></button></a>
+            <a href="../html/login.html"><button id="login-button" class="action-button"><label class="button-label">LOGIN</label></button></a>
+            <a href="../html/signup.html"><button id="signup-button" class="action-button"><label class="button-label">SIGNUP</label></button></a>
         </div>
     </header>
-    <div id="main-panel">
-        <div id="main-panel-text">
-            <div id="text-heading">ABOUT</div>
-            <div id="text-para"> <p>VVRS is a centralised vulnerability reporting system for VIT Bhopal owned websites. Students can contribute to the safety of the .vitbhopal domain by reporting CVEs that they were able to find independently.</p></div>
+    <!-- main pane contains main content -->
+    <div id="main-pane">
+        <div id="text-box">
+            <div id="text-pane">
+                <div><h3>ABOUT</h3></div>
+                <div><p>VVRS is a centralised vulnerability reporting system for VIT Bhopal owned websites. Students can contribute to the safety of the .vitbhopal domain by independently reporting CVEs they find.</p></div>
+            </div>
         </div>
-        <img src="../resources/VVRS-plan-wobg.png" alt="VVRS logo">
+        <div id="image"><img src="../resources/VVRS-plan-wobg.png" alt="VVRS plan"></div>
     </div>
-    <footer>
-        <h6>made by with &LessSlantEqual;3 by 21BCY</h6>
-    </footer>
+    <footer><div>made with ♡ by 21BCY</div></footer>
 </body>
 </html>
