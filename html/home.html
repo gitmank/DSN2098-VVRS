@@ -11,7 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <!-- linking stylesheet -->
     <link rel="stylesheet" href="../css/home.css">
-    <title>Home Page</title>
+    <script src="../js/home.js"></script>
+    <script src="../js/users.json"></script>
+    <!-- linking script file -->
+    <title>VVRS Home Page</title>
 </head>
 <body>
     <!-- header contains logo, title and nav buttons -->
@@ -21,6 +24,7 @@
         <div id="actions">
             <a href="../html/login.html"><button id="login-button" class="action-button"><label class="button-label">LOGIN</label></button></a>
             <a href="../html/signup.html"><button id="signup-button" class="action-button"><label class="button-label">SIGNUP</label></button></a>
+            <button id="danger" onclick="showPassword()">HELLO</button>
         </div>
     </header>
     <!-- main pane contains main content -->
