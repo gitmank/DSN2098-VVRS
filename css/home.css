@@ -3,8 +3,9 @@
     font-family: 'IBM PLex Mono', Courier, monospace;
     border-color: black;    
 }
+
 /* default view for large screens */
-/* header styling */
+/* header footer styling */
 header {
     display: flex;
     justify-content: space-around;
@@ -54,6 +55,7 @@ footer {
     display: flex;
     justify-content: center;
 }
+
 /* main pane styling */
 #main-pane {
     display: flex;
@@ -109,6 +111,7 @@ footer {
 #image img {
     max-width: 500px;
 }
+
 /* view for smaller screens */
 @media screen and (max-width: 800px) {
     /* header modifications */
