@@ -29,16 +29,16 @@
     <div id="main-panel">
         <img src="/resources/user-icon.svg" alt="user-icon" id="user-icon">
         <label for="user-icon"><h2>SIGNUP</h2></label>
-        <form id="signup-form" method="post" action="">
+        <form id="signup-form" method="post" action="/add-user">
             <div id="fields">
-                <label for="email-field">Email</label>
-                <input type="email" name="Email" id="email-field" class="field" placeholder="Enter your VITB email">
+                <label for="username-field">Username</label>
+                <input type="text" name="username" id="username-field" class="field" placeholder="Enter new username">
                 <label for="password-field">Password</label>
-                <input type="password" name="password" id="password-field" class="field" placeholder="Enter your password">
-                <label for="confirm-password-field">Password</label>
-                <input type="password" name="confirm-password" id="confirm-password-field" class="field" placeholder="Confirm your password">
+                <input type="password" name="password" id="password-field" class="field" placeholder="Enter new password">
+                <label for="confirm-password-field">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirm-password-field" class="field" placeholder="Confirm new password">
             </div>
-            <input type="submit" id="submit" class="action-button" value="-->">
+            <input type="submit" id="submit" class="action-button" value="-->" form="signup-form">
         </form>
     </div>
     <footer><div>made with ♡ by 21BCY</div></footer>

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/login.css">
     <!-- linking front-end javascript -->
     <script src="/js/login.js"></script>
+    <script src="/server.js"></script>
     <title>Login Page</title>
 </head>
 <body>
@@ -29,14 +30,14 @@
     <div id="main-panel">
         <img src="/resources/user-icon.svg" alt="user-icon" id="user-icon">
         <label for="user-icon"><h2>LOGIN</h2></label>
-        <form id="login-form" method="post" action="">
+        <form id="login-form" method="post" action="/authenticate">
             <div id="fields">
-                <label for="email-field">Email</label>
-                <input type="email" name="Email" id="email-field" class="field" placeholder="Enter your VITB email">
+                <label for="username-field">Username</label>
+                <input type="text" name="username" id="username-field" class="field" placeholder="Enter your username">
                 <label for="password-field">Password</label>
                 <input type="password" name="password" id="password-field" class="field" placeholder="Enter your password">
             </div>
-            <input type="submit" id="submit" class="action-button" value="-->">
+            <input type="submit" id="submit" class="action-button" value="-->" form="login-form">
         </form>
     </div>
     <footer><div>made with ♡ by 21BCY</div></footer>
