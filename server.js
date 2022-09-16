@@ -7,6 +7,7 @@ let express = require("express");
 let bodyParser = require("body-parser");
 const { default: mongoose } = require('mongoose');
 const { doesNotMatch } = require("assert");
+const { createDiffieHellmanGroup } = require("crypto");
 let app = express();
 
 // connecting to MongoDB Atlas
@@ -19,6 +20,17 @@ let userSchema = new mongoose.Schema({
 });
 // creating user model
 let User = mongoose.model("User", userSchema);
+
+// snippet for reading from DB
+// User.find({username: "b"}, (error, data) => {
+//     if(error) {
+//         console.log(error);
+//     }
+//     else {
+//         console.log(data);
+//         console.log(data.length);
+//     }
+// })
 
 // initializing server
 app.listen(6969, "localhost");
@@ -39,47 +51,68 @@ app.get("/", (req, res) => {
 
 // response to POST request from login.html page
 app.post("/authenticate", bodyParser.urlencoded({ extended: false }), (req, res) => {
-    let temp = {
-        username: process.env.VVRS_ADMIN_USERNAME,
-        password: process.env.VVRS_ADMIN_PASSWORD,
-        isAdmin: true
-    }
-    if(req.body.username == temp.username && req.body.password == temp.password) {
-        if(temp.isAdmin) {
-            res.sendFile(__dirname + "/html/admin-home.html");
+    User.find({username: req.body.username}, (error, data) => {
+        if(error) {
+            console.log(error);
         }
         else {
-            res.sendFile(__dirname + "/html/student-home.html");
+            if (data.length>0) {
+                if(req.body.username == data[0].username && req.body.password == data[0].password) {
+                    if(data[0].isAdmin) {
+                        res.sendFile(__dirname + "/html/admin-home.html");
+                    }
+                    else {
+                        res.sendFile(__dirname + "/html/student-home.html");
+                    }
+                }
+                else {
+                    console.log("Invalid Credentials!");
+                    res.sendFile(__dirname + "/html/login.html");
+                }
+            }
+            else {
+                console.log("User does not exist!")
+                res.sendFile(__dirname + "/html/signup.html");
+            }
         }
-    }
-    else {
-        console.log("Invalid Credentials!");
-        res.sendFile(__dirname + "/html/login.html");
-    }
+    })
 });
 
 // response to POST requests from signup.html page
 app.post("/add-user", bodyParser.urlencoded({extended: false}), (req, res) => {
-    if (req.body.password != req.body.confirm_password) {
-        console.log("Passwords don't match");
-        res.sendFile(__dirname + "/html/signup.html");
-    }
-    else {
-        // creating a User
-        let temp = new User({
-        username: req.body.username,
-        password: req.body.password
-        });
-        // saving User to DB
-        temp.save((error, data) => {
-            if(error) {
-                console.log(error);
-                res.sendFile(__dirname + "/html/signup.html");
+    User.find({username: req.body.username}, (error, data) => {
+        if(error) {
+            console.log(error);
+        }
+        else {
+            if(data.length == 0) {
+                if (req.body.password != req.body.confirm_password) {
+                    console.log("Passwords don't match");
+                    res.sendFile(__dirname + "/html/signup.html");
+                }
+                else {
+                    // creating a User
+                    let temp = new User({
+                    username: req.body.username,
+                    password: req.body.password
+                    });
+                    // saving User to DB
+                    temp.save((error, data) => {
+                        if(error) {
+                            console.log(error);
+                            res.sendFile(__dirname + "/html/signup.html");
+                        }
+                        else {
+                            console.log("User added");
+                            res.sendFile(__dirname + "/html/login.html");
+                        }
+                    })
+                }
             }
             else {
-                console.log("User added");
+                console.log("Username exists!")
                 res.sendFile(__dirname + "/html/login.html");
             }
-        })
-    }
+        }
+    })
 });
