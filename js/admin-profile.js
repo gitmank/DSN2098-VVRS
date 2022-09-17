@@ -1,0 +1,1 @@
+// frontend javascript to show user data on admin-profile.html

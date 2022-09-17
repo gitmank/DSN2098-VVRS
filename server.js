@@ -12,12 +12,15 @@ let app = express();
 
 // connecting to MongoDB Atlas
 mongoose.connect(process.env.ATLAS_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
+
 // creating user schema
 let userSchema = new mongoose.Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
+    email: {type: String},
     isAdmin: {type: Boolean, default: false}
 });
+
 // creating user model
 let User = mongoose.model("User", userSchema);
 
@@ -34,6 +37,7 @@ let User = mongoose.model("User", userSchema);
 
 // initializing server
 app.listen(6969, "localhost");
+
 // middleware
 app.use("/", (req, res, next) => {
     console.log(req.method + req.ip + req.path);
@@ -52,10 +56,7 @@ app.get("/", (req, res) => {
 // response to POST request from login.html page
 app.post("/authenticate", bodyParser.urlencoded({ extended: false }), (req, res) => {
     User.find({username: req.body.username}, (error, data) => {
-        if(error) {
-            console.log(error);
-        }
-        else {
+        if(!error) {
             if (data.length>0) {
                 if(req.body.username == data[0].username && req.body.password == data[0].password) {
                     if(data[0].isAdmin) {
@@ -81,10 +82,7 @@ app.post("/authenticate", bodyParser.urlencoded({ extended: false }), (req, res)
 // response to POST requests from signup.html page
 app.post("/add-user", bodyParser.urlencoded({extended: false}), (req, res) => {
     User.find({username: req.body.username}, (error, data) => {
-        if(error) {
-            console.log(error);
-        }
-        else {
+        if(!error) {
             if(data.length == 0) {
                 if (req.body.password != req.body.confirm_password) {
                     console.log("Passwords don't match");
