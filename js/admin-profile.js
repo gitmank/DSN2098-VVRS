@@ -1,1 +1,3 @@
-// frontend javascript to show user data on admin-profile.html
+function test() {
+    document.getElementById("username_of_admin").innerText = "admin@vvrs";
+}
