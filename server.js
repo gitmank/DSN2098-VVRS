@@ -191,6 +191,12 @@ app.post("/changeEmail", bodyParser.urlencoded({ extended: false }), async (req,
     User.findOneAndUpdate({username: req.cookies.username}, {email: req.body.newEmail}, (error, data) => {
         if(!error) {
             console.log("Email Updated")
+        }
+    })
+    Report.updateMany({username: req.cookies.username}, {email: req.body.newEmail}, (error, data) => {
+        if(!error) {
+            console.log("Email Updated in reports")
+            res.cookie("email", req.body.newEmail, {maxAge: 500000, httpOnly: true})
             res.redirect("/profile")
         }
     })
@@ -207,40 +213,40 @@ app.post("/updateReport", bodyParser.urlencoded({ extended: false }), async (req
 
 // response to POST request from login.html page
 app.post("/authenticate", bodyParser.urlencoded({ extended: false }), async (req, res) => {
-    try {
-        User.find({username: req.body.username}, async (error, data) => {
-            if(!error) {
+    User.find({username: req.body.username}, async (error, data) => {
+        if(!error) {
+            try {
                 var passwordsMatch = await bcrypt.compare(req.body.password, data[0].password)
                 var usernamesMatch = req.body.username == data[0].username
-                if (data.length>0) {
-                    if(usernamesMatch && passwordsMatch) {
-                        if(data[0].isAdmin) {
-                            res.cookie("user", "admin", {maxAge: 1000000, httpOnly: true})
-                            res.cookie("username", req.body.username, {maxAge: 1000000, httpOnly: true})
-                            res.sendFile(__dirname + "/html/admin-home.html");
-                        }
-                        else {
-                            res.cookie("user", "student", {maxAge: 500000, httpOnly: true})
-                            res.cookie("email", data[0].email, {maxAge: 500000, httpOnly: true})
-                            res.cookie("username", req.body.username, {maxAge: 1000000, httpOnly: true})
-                            res.sendFile(__dirname + "/html/student-home.html");
-                        }
+            }
+            catch (err) {
+                res.sendFile(__dirname + "/html/home.html")
+            }
+            if (data.length>0) {
+                if(usernamesMatch && passwordsMatch) {
+                    if(data[0].isAdmin) {
+                        res.cookie("user", "admin", {maxAge: 1000000, httpOnly: true})
+                        res.cookie("username", req.body.username, {maxAge: 1000000, httpOnly: true})
+                        res.sendFile(__dirname + "/html/admin-home.html");
                     }
                     else {
-                        console.log("Invalid Credentials!");
-                        res.sendFile(__dirname + "/html/login.html");
+                        res.cookie("user", "student", {maxAge: 500000, httpOnly: true})
+                        res.cookie("email", data[0].email, {maxAge: 500000, httpOnly: true})
+                        res.cookie("username", req.body.username, {maxAge: 1000000, httpOnly: true})
+                        res.sendFile(__dirname + "/html/student-home.html");
                     }
                 }
                 else {
-                    console.log("User does not exist!")
-                    res.sendFile(__dirname + "/html/signup.html");
+                    console.log("Invalid Credentials!");
+                    res.sendFile(__dirname + "/html/login.html");
                 }
             }
-        })
-    }
-    catch {
-        res.sendStatus(500).send()
-    }
+            else {
+                console.log("User does not exist!")
+                res.sendFile(__dirname + "/html/signup.html");
+            }
+        }
+    })
 });
 
 // response to POST requests from signup.html page
@@ -281,8 +287,8 @@ app.post("/add-user", bodyParser.urlencoded({extended: false}), async (req, res)
             }
         })
     }
-    catch {
-        res.sendStatus(500).send()
+    catch (err) {
+        res.sendFile(__dirname + "/html/home.html")
     }
 });
 
