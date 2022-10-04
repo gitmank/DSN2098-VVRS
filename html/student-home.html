@@ -15,15 +15,23 @@
         <title>VVRS Student Home Page</title>
     </head>
 <body>
-        <!-- header contains logo, title and nav buttons -->
-        <header id="navbar">
-            <div><img src="/resources/VVRS-logo-wobg.png" alt="VVRS Logo" id="vvrs-logo"></div>
-            <h1 id="title">Student Home</h1>
-            <div id="actions">
-                <a href="/profile"><button id="profile-button" class="action-button"><img src="/resources/user-icon-black.svg" alt="Profile Icon" id="profile-button-image"></button></a>
-                <a href="/logout"><button id="logout-button" class="action-button"><label class="button-label">LOGOUT</label></button></a>
-            </div>
-        </header>
-        <footer><div>made with ♡ by 21BCY</div></footer>
+    <!-- header contains logo, title and nav buttons -->
+    <header id="navbar">
+        <div><img src="/resources/VVRS-logo-wobg.png" alt="VVRS Logo" id="vvrs-logo"></div>
+        <h1 id="title">Student Home</h1>
+        <div id="actions">
+            <a href="/profile"><button id="profile-button" class="action-button"><label class="button-label">⚙️</label></button></a>
+            <a href="/logout"><button id="logout-button" class="action-button"><label class="button-label">LOGOUT</label></button></a>
+        </div>
+    </header>
+    <div id="main-panel" style="height: 500px; border: 2px solid black; border-top: 0px;">
+        <form action="/searchReport" method="post" style="display: flex; justify-content: center;">
+            <input name="reportID" id="reportID" type="text" placeholder="Search by Report ID 🕵🏽‍♂️"></input>
+            <input id="searchButton" type="submit" value="🔍"></input>
+        </form>
+        <a href="/html/newReport.html" id="newReport"><button id="newReportButton"><label for="newReportButton">NEW REPORT</label></button></a>
+        <a href="/viewReports" id="viewReport"><button id="viewReportButton"><label for="viewReportButton">VIEW REPORTS</label></button></a>
+    </div>
+    <footer><div>made with ♡ by 21BCY</div></footer>
 </body>
 </html>

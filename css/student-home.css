@@ -39,11 +39,11 @@ header img {
     gap: 40px;
 }
 .action-button {
-    background-color: aquamarine;
+    background-color: rgba(195, 241, 89, 0.9);
     border-radius: 10px;
 }
 .action-button:hover {
-    background-color: white;
+    background-color: rgba(0, 255, 255, 0.5);
     border-radius: 0px;
 }
 #logout-button {
@@ -60,6 +60,48 @@ header img {
 }
 #profile-button-image {
     min-width: 40px;
+}
+#reportID {
+    width: 30%;
+    margin: 5%;
+    padding: 1%;
+    font-size: 20px;
+    margin-right: 1%;
+}
+#searchButton {
+    display: inline-flex;
+    justify-content: center;
+    height: 5%;
+    width: 3.5%; 
+    font-size: 32px; 
+    margin: 5%; 
+    margin-left: 1%; 
+    padding: 6px;
+    background-color: rgba(195, 241, 89, 0.9);
+    border-radius: 5px;
+}
+#searchButton:hover {
+    background-color: rgba(0, 255, 255, 0.5);
+    border-radius: 0px;
+}
+#newReport, #viewReport {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+#newReportButton, #viewReportButton {
+    display: flex;
+    justify-content: center;
+    width: 20%; 
+    font-size: 24px; 
+    margin-top: 1%;
+    padding: 1%;
+    background-color:rgba(195, 241, 89, 0.9);
+    border-radius: 5px;
+}
+#newReportButton:hover, #viewReportButton:hover {
+    background-color: rgba(0, 255, 255, 0.5);
+    border-radius: 0px;
 }
 footer {
     margin-top: 10px;
@@ -85,5 +127,21 @@ footer {
     .button-label {
         font-size: 20px;
         font-weight: 300;
+    }
+    #reportID {
+        min-width: 300px;
+        margin: 5%;
+        padding: 1%;
+        font-size: 16px;
+        margin-right: 1%;
+    }
+    #searchButton {
+        display: inline-flex;
+        height: 5%;
+        min-width: 50px; 
+        font-size: 20px; 
+        margin: 5%; 
+        margin-left: 1%; 
+        padding: 6px;
     }
 }

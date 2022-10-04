@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- getting IBM Plex Mono from Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
+        <!-- linking stylesheet -->
+        <link rel="stylesheet" href="/css/student-home.css">
+        <!-- linking front-end javascript -->
+        <script src="/server.js"></script>
+        <title>VVRS New Report</title>
+    </head>
+<body>
+    <!-- header contains logo, title and nav buttons -->
+    <header id="navbar">
+        <div><img src="/resources/VVRS-logo-wobg.png" alt="VVRS Logo" id="vvrs-logo"></div>
+        <h1 id="title">Report Builder</h1>
+        <div id="actions">
+            <a href="/login"><button id="profile-button" class="action-button"><label class="button-label">🔙</label></button></a>
+            <a href="/logout"><button id="logout-button" class="action-button"><label class="button-label">LOGOUT</label></button></a>
+        </div>
+    </header>
+    <div id="main-panel">
+        <div style="border: 2px black solid; height:90%; width:90%; margin-top: 2%; padding: 2%;">
+            <form action="/newReport" method="post" id="new-report-form">
+                <h1>New Report</h1>
+                <div id="categoryCheckboxes">
+                    <h3>CATEGORY</h3>
+                    <input type="radio" id="bug" name="category" value="Bug">
+                    <label for="bug">🪲 Bug</label><br>
+                    <input type="radio" id="vulnerability" name="category" value="Vulnerability">
+                    <label for="vulnerability">🔓 Vulnerability</label><br>
+                    <input type="radio" id="misc" name="category" value="Misc">
+                    <label for="misc">📁 Misc</label>
+                </div>
+                <div id="severityCheckboxes">
+                    <h3>SEVERITY</h3>
+                    <input type="radio" id="low" name="severity" value="Low">
+                    <label for="low">❕ Low</label><br>
+                    <input type="radio" id="moderate" name="severity" value="Moderate">
+                    <label for="moderate">❗️ Moderate</label><br>
+                    <input type="radio" id="critical" name="severity" value="Critical">
+                    <label for="critical">⚠️ Critical</label>
+                </div>
+                <div>
+                    <h3>DESCRIPTION</h3>
+                    <textarea name="description" id="description" cols="40" rows="8" placeholder="Type details of the issue here." style="font-size: 16px; padding: 1%;"></textarea>
+                </div>
+                <div>
+                    <h3>LINK</h3>
+                    <h6>you can add a link to some screenshots</h6>
+                    <input type="text" name="mediaLink" id="link" placeholder="paste link here" style="padding: 2%; width: 80%; font-size: 18px;">
+                </div>
+                <input id="searchButton" type="submit" value="Send Report 📤" form="new-report-form"></input>
+            </form>
+        </div>
+    </div>
+    <footer><div>made with ♡ by 21BCY</div></footer>
+</body>
+</html>
+<style>
+    * {
+    box-sizing: border-box;
+    font-family: 'IBM PLex Mono', Courier, monospace;
+    border-color: black;    
+}
+
+/* default view for large screens */
+/* header footer styling */
+header {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 255, 255, 0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 2px solid black;
+    border-bottom: 0px;
+}
+header:hover {
+    border-radius: 0px;
+    background-color: rgba(195, 241, 89, 0.9);
+}
+header div {
+    display: flex;
+    align-items: center;
+}
+header img {
+    max-height: 150px;
+}
+#title {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+#actions {
+    display: flex;
+    gap: 40px;
+}
+.action-button {
+    background-color: rgba(195, 241, 89, 0.9);
+    border-radius: 10px;
+}
+.action-button:hover {
+    background-color: rgba(0, 255, 255, 0.5);
+    border-radius: 0px;
+}
+#logout-button {
+    background-color: rgb(254, 210, 20);
+    border-radius: 10px;
+}
+#logout-button:hover {
+    background-color: rgb(220, 20, 60);
+    border-radius: 0px;
+}
+.button-label {
+    font-size: 26px;
+    font-weight: 300;
+}
+#profile-button-image {
+    min-width: 40px;
+}
+#main-panel {
+    height: 700px; 
+    border: 2px solid black; 
+    border-top: 0px; 
+    display: flex; 
+    justify-content: center;
+}
+#reportID {
+    width: 30%;
+    margin: 5%;
+    padding: 1%;
+    font-size: 20px;
+    margin-right: 1%;
+}
+#new-report-form {
+    display: grid; 
+    justify-content:space-around; 
+    gap: 2%; grid-template-columns: 
+    1fr 1fr 1fr; font-size: 20px; 
+    grid-template-rows: 1fr 1fr;
+}
+#searchButton {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    height: 30%;
+    width: 90%; 
+    font-size: 24px; 
+    margin: 5%; 
+    margin-left: 1%; 
+    padding: 6px;
+    background-color: rgba(195, 241, 89, 0.9);
+    border-radius: 5px;
+}
+#searchButton:hover {
+    background-color: rgba(0, 255, 255, 0.5);
+    border-radius: 0px;
+}
+#newReport {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+#newReportButton {
+    display: flex;
+    justify-content: center;
+    width: 20%; 
+    font-size: 24px; 
+    margin-top: 1%;
+    padding: 1%;
+    background-color:rgba(195, 241, 89, 0.9);
+    border-radius: 5px;
+}
+#newReportButton:hover {
+    background-color: rgba(0, 255, 255, 0.5);
+    border-radius: 0px;
+}
+footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* view for smaller screens */
+@media screen and (max-width: 800px) {
+    /* header modifications */
+    header img {
+        max-height: 100px;
+    }
+    #title {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    #actions {
+        gap: 10px;
+    }
+    .button-label {
+        font-size: 20px;
+        font-weight: 300;
+    }
+    #main-panel {
+        height: 1200px;
+        border: 2px solid black; 
+        border-top: 0px; 
+        display: flex; 
+        justify-content: center;
+    }   
+    #reportID {
+        min-width: 300px;
+        margin: 5%;
+        padding: 1%;
+        font-size: 16px;
+        margin-right: 1%;
+    }
+    #searchButton {
+        display: inline-flex;
+        height: 50%;
+        min-width: 30px; 
+        font-size: 20px; 
+        margin: 5%; 
+        margin-left: 1%; 
+        padding: 6px;
+    }
+    #new-report-form {
+        display: grid; 
+        gap: 2%; 
+        grid-template-columns: 1fr; 
+        font-size: 16px; 
+        grid-template-rows: auto;
+        padding: 5%;
+    }
+}
+</style>

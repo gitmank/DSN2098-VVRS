@@ -17,24 +17,27 @@ let app = express();
 // connecting to MongoDB Atlas
 mongoose.connect(process.env.ATLAS_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// creating user schema
+// creating schema
 let userSchema = new mongoose.Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
     email: {type: String},
     isAdmin: {type: Boolean, default: false}
 });
+let reportSchema = new mongoose.Schema({
+    username: {type: String}, // of student
+    email: {type: String}, // of student
+    category: {type: String, default: "Misc"}, // bug, vulnerability, misc
+    severity: {type: String}, // low, moderate critical
+    status: {type: String, default: "Open"}, // open, closed, seen, accepted, rejected
+    description: {type:String}, // by user
+    mediaLink: {type:String}, // from user
+    comment: {type:String}, // by admin
+})
 
 // creating user model
 let User = mongoose.model("User", userSchema);
-
-// snippet for reading from DB
-// User.find({username: "b"}, (error, data) => {
-//     if(!error) {
-//         console.log(data);
-//         console.log(data.length);
-//     }
-// })
+let Report = mongoose.model("Report", reportSchema);
 
 // initializing server
 app.listen(6969, "localhost");
@@ -80,6 +83,92 @@ app.get("/profile", bodyParser.urlencoded({ extended: false }), (req, res) => {
     })
 })
 
+app.post("/searchReport", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.find({_id: req.body.reportID}, (error, data) => {
+        if(!error) {
+            res.render("singleReport.ejs", {
+                report: data[0]
+            })
+        }
+    })
+})
+
+app.post("/respondToReport", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.find({_id: req.body.reportID}, (error, data) => {
+        if(!error) {
+            res.render("singleReport-admin.ejs", {
+                report: data[0]
+            })
+        }
+    })
+})
+
+app.post("/deleteReport", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.deleteMany({_id: req.body.reportID}, (error, data) => {
+        if(!error) {
+            res.redirect("/login")
+        }
+    })
+})
+
+app.get("/viewReports", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.find({username: req.cookies.username}, (error, data) => {
+        if(!error) {
+            res.render("student-reports.ejs", {
+                reports: data
+            })
+        }
+    })
+})
+
+app.get("/showAllReports", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.find({}, (error, data) => {
+        if(!error) {
+            res.render("admin-reports.ejs", {
+                reports: data
+            })
+        }
+    })
+})
+
+app.get("/showOpenReports", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.find({status: "Open"}, (error, data) => {
+        if(!error) {
+            res.render("admin-reports.ejs", {
+                reports: data
+            })
+        }
+    })
+})
+
+app.get("/showCriticalReports", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.find({severity: "Critical"}, (error, data) => {
+        if(!error) {
+            res.render("admin-reports.ejs", {
+                reports: data
+            })
+        }
+    })
+})
+app.get("/showSeenReports", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.find({status: "Seen"}, (error, data) => {
+        if(!error) {
+            res.render("admin-reports.ejs", {
+                reports: data
+            })
+        }
+    })
+})
+app.get("/showAcceptedReports", bodyParser.urlencoded({ extended: false }), (req, res) => {
+    Report.find({status: "Accepted"}, (error, data) => {
+        if(!error) {
+            res.render("admin-reports.ejs", {
+                reports: data
+            })
+        }
+    })
+})
+
 // updating password
 app.post("/changePassword", bodyParser.urlencoded({ extended: false }), async (req, res) => {
     try {
@@ -107,6 +196,15 @@ app.post("/changeEmail", bodyParser.urlencoded({ extended: false }), async (req,
     })
 })
 
+app.post("/updateReport", bodyParser.urlencoded({ extended: false }), async (req, res) => {
+    Report.findOneAndUpdate({_id: req.body.reportID}, {status: req.body.status, comment: req.body.comment}, (error, data) => {
+        if(!error) {
+            console.log("Email Updated")
+            res.redirect("/login")
+        }
+    })
+})
+
 // response to POST request from login.html page
 app.post("/authenticate", bodyParser.urlencoded({ extended: false }), async (req, res) => {
     try {
@@ -123,6 +221,7 @@ app.post("/authenticate", bodyParser.urlencoded({ extended: false }), async (req
                         }
                         else {
                             res.cookie("user", "student", {maxAge: 500000, httpOnly: true})
+                            res.cookie("email", data[0].email, {maxAge: 500000, httpOnly: true})
                             res.cookie("username", req.body.username, {maxAge: 1000000, httpOnly: true})
                             res.sendFile(__dirname + "/html/student-home.html");
                         }
@@ -186,3 +285,20 @@ app.post("/add-user", bodyParser.urlencoded({extended: false}), async (req, res)
         res.sendStatus(500).send()
     }
 });
+
+app.post("/newReport", bodyParser.urlencoded({extended: false}), (req, res) => {
+    temp = new Report({
+        username: req.cookies.username,
+        email: req.cookies.email,
+        category: req.body.category,
+        severity: req.body.severity,
+        description: req.body.description,
+        mediaLink: req.body.mediaLink
+    })
+    temp.save((error, data) => {
+        if(!error) {
+            console.log("Report added!")
+        }
+        res.redirect("/login");
+    })
+})
