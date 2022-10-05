@@ -25,8 +25,10 @@
     </header>
     <!-- main pane contains main content -->
     <div id="main-panel">
-        <img src="/resources/user-icon.svg" alt="user-icon" id="user-icon">
-        <label for="user-icon"><h2>Account Details</h2></label>
+        <div style="display: grid; grid-template-columns: 1fr; justify-items: center;">
+            <img src="/resources/user-icon.svg" alt="user-icon" id="user-icon">
+            <label for="user-icon"><h2>Account Details</h2></label>
+        </div>
         <div id="account-details">
             <h3>Username:</h3>
             <h4 id="username_of_admin"><%= user.username %></h4>

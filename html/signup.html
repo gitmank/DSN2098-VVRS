@@ -28,8 +28,10 @@
     </header>
     <!-- signup fields and submit button -->
     <div id="main-panel">
-        <img src="/resources/user-icon.svg" alt="user-icon" id="user-icon">
-        <label for="user-icon"><h2>SIGNUP</h2></label>
+        <div style="display: grid; grid-template-columns: 1fr; justify-items: center;">
+            <img src="/resources/user-icon.svg" alt="user-icon" id="user-icon">
+            <label for="user-icon"><h2>LOGIN</h2></label>
+        </div>
         <form id="signup-form" method="post" action="/add-user">
             <div id="fields">
                 <label for="username-field">Username</label>
