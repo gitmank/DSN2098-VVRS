@@ -51,7 +51,6 @@ app.use("/", (req, res, next) => {
 });
 app.use("/css", express.static(__dirname + "/css"));
 app.use("/resources", express.static(__dirname + "/resources"));
-app.use("/js", express.static(__dirname + "/js"));
 app.use("/html", express.static(__dirname + "/html"));
 app.use(cookieParser())
 app.use(favicon(__dirname + '/resources/vvrs-logo.ico'));
@@ -60,6 +59,14 @@ app.use(favicon(__dirname + '/resources/vvrs-logo.ico'));
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/html/home.html");
 });
+
+app.get("/signup", bodyParser.urlencoded({ extended: false }), (req, res) => {
+  res.sendFile(__dirname + "/html/signup.html")
+})
+
+app.get("/reportBuilder", bodyParser.urlencoded({ extended: false }), (req, res) => {
+  res.sendFile(__dirname + "/html/newReport.html")
+})
 
 app.get("/login", bodyParser.urlencoded({ extended: false }), (req, res) => {
   if (req.cookies.user == "admin") {
