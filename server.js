@@ -54,7 +54,7 @@ app.use("/resources", express.static(__dirname + "/resources"));
 app.use("/js", express.static(__dirname + "/js"));
 app.use("/html", express.static(__dirname + "/html"));
 app.use(cookieParser())
-app.use(favicon(__dirname + '/resources/vvrs-favicon.ico'));
+app.use(favicon(__dirname + '/resources/vvrs-logo.ico'));
 
 // root path request and response
 app.get("/", (req, res) => {
