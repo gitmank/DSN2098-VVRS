@@ -118,18 +118,18 @@ footer {
     #title {
         padding-left: 10px;
         padding-right: 10px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 500;
     }
     #actions {
         gap: 10px;
     }
     .button-label {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
     }
     #reportID {
-        min-width: 300px;
+        min-width: 200px;
         margin: 5%;
         padding: 1%;
         font-size: 16px;
@@ -144,4 +144,15 @@ footer {
         margin-left: 1%; 
         padding: 6px;
     }
+    #newReport, #viewReport {
+      text-decoration: none;
+      justify-content: space-around;
+      width: 800px;
+      margin-left: -220px;
+      margin-bottom: 50px;
+      margin-top: 50px;
+    }
+  #profile-button-image {
+    height: 30px;
+  }
 }

@@ -76,14 +76,17 @@ footer {
     #title {
         padding-left: 10px;
         padding-right: 10px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 500;
     }
     #actions {
         gap: 10px;
     }
     .button-label {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
+    }
+    #profile-button-image {
+      width: 20px;
     }
 }

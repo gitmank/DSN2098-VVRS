@@ -36,7 +36,7 @@
             </table>
             <table style="width: 100%;">
                 <% reports.forEach((report) => { %>
-                    <tr style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; border: 1px solid black;">
+                    <tr id="data-rows">
                         <td><%= report._id %></td>
                         <td><%= report.category %></td>
                         <% if(report.severity == "Low") {var severityColor = "green"} 
@@ -127,6 +127,11 @@ td {
 th {
     font-size: 24px;
 }
+#data-rows {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  border: 1px solid black;
+}
 footer {
     margin-top: 10px;
     display: flex;
@@ -136,21 +141,33 @@ footer {
 /* view for smaller screens */
 @media screen and (max-width: 800px) {
     /* header modifications */
+    * {
+      font-size: 80%;
+    }
     header img {
         max-height: 100px;
     }
     #title {
         padding-left: 10px;
         padding-right: 10px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 500;
     }
     #actions {
         gap: 10px;
     }
     .button-label {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
     }
+    td {
+        font-size: 12px;
+    }
+    th {
+        font-size: 18px;
+    }
+  #data-rows {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

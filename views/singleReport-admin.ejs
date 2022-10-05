@@ -148,7 +148,7 @@ header img {
     min-width: 40px;
 }
 #main-panel {
-    height: 1000px; 
+    min-height: 700px; 
     border: 2px solid black; 
     border-top: 0px; 
     display: flex; 
@@ -164,12 +164,13 @@ header img {
 #new-report-form {
     display: grid; 
     justify-content:space-around; 
-    gap: 2%; grid-template-columns: 
+    gap: 2%; 
+    grid-template-columns: 
     1fr 1fr 1fr; font-size: 20px; 
     grid-template-rows: 1fr 1fr;
 }
 #searchButton {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     justify-self: center;
     align-self: center;
@@ -179,12 +180,8 @@ header img {
     margin: 5%; 
     margin-left: 1%; 
     padding: 6px;
-    background-color: rgba(195, 241, 89, 0.9);
     border-radius: 5px;
-}
-#searchButton:hover {
-    background-color: rgba(0, 255, 255, 0.5);
-    border-radius: 0px;
+    color: black;
 }
 #newReport {
     text-decoration: none;
@@ -205,6 +202,11 @@ header img {
     background-color: rgba(0, 255, 255, 0.5);
     border-radius: 0px;
 }
+  textarea {
+    font-size: 16px; 
+    padding: 1%; 
+    resize: none;"
+  }
 footer {
     margin-top: 10px;
     display: flex;
@@ -231,7 +233,7 @@ footer {
         font-weight: 300;
     }
     #main-panel {
-        height: 1200px;
+        height: 1400px;
         border: 2px solid black; 
         border-top: 0px; 
         display: flex; 
@@ -241,14 +243,14 @@ footer {
         min-width: 300px;
         margin: 5%;
         padding: 1%;
-        font-size: 16px;
+        font-size: 14px;
         margin-right: 1%;
     }
     #searchButton {
         display: inline-flex;
-        height: 50%;
+        height: 50px;
         min-width: 30px; 
-        font-size: 20px; 
+        font-size: 14px; 
         margin: 5%; 
         margin-left: 1%; 
         padding: 6px;
@@ -257,9 +259,16 @@ footer {
         display: grid; 
         gap: 2%; 
         grid-template-columns: 1fr; 
-        font-size: 16px; 
+        font-size: 14px; 
         grid-template-rows: auto;
         padding: 5%;
     }
+  h2 {
+    font-size: 14px;
+  }
+  textarea {
+    font-size: 14px; 
+    height: 10em;
+    width: 20em;
+  }
 }
-</style>
