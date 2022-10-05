@@ -86,9 +86,14 @@ app.get("/profile", bodyParser.urlencoded({ extended: false }), (req, res) => {
 app.post("/searchReport", bodyParser.urlencoded({ extended: false }), (req, res) => {
     Report.find({_id: req.body.reportID}, (error, data) => {
         if(!error) {
-            res.render("singleReport.ejs", {
-                report: data[0]
-            })
+            if (data.length != 0) {
+                res.render("singleReport.ejs", {
+                    report: data[0]
+                })
+            }
+            else {
+                res.redirect("/login")
+            }
         }
     })
 })
@@ -96,9 +101,14 @@ app.post("/searchReport", bodyParser.urlencoded({ extended: false }), (req, res)
 app.post("/respondToReport", bodyParser.urlencoded({ extended: false }), (req, res) => {
     Report.find({_id: req.body.reportID}, (error, data) => {
         if(!error) {
-            res.render("singleReport-admin.ejs", {
-                report: data[0]
-            })
+            if (data.length != 0) {
+                res.render("singleReport-admin.ejs", {
+                    report: data[0]
+                })
+            }
+            else {
+                res.redirect("/login")
+            }
         }
     })
 })
