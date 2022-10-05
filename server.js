@@ -11,6 +11,7 @@ const { createDiffieHellmanGroup } = require("crypto");
 const bcrypt = require("bcrypt")
 const cookie = require("cookie");
 const cookieParser = require("cookie-parser");
+const favicon = require("serve-favicon")
 
 let app = express();
 
@@ -52,6 +53,7 @@ app.use("/resources", express.static(__dirname + "/resources"));
 app.use("/js", express.static(__dirname + "/js"));
 app.use("/html", express.static(__dirname + "/html"));
 app.use(cookieParser())
+app.use(favicon(__dirname + '/resources/vvrs-favicon.ico'));
 
 // root path request and response
 app.get("/", (req, res) => {
