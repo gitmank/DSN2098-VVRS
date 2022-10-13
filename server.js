@@ -51,7 +51,6 @@ app.use("/", (req, res, next) => {
 });
 app.use("/css", express.static(__dirname + "/css"));
 app.use("/resources", express.static(__dirname + "/resources"));
-app.use("/html", express.static(__dirname + "/html"));
 app.use(cookieParser())
 app.use(favicon(__dirname + '/resources/vvrs-logo.ico'));
 
